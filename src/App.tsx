@@ -1,26 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import IterativeTree from "./IterativeTree";
+import RecursiveTree from "./RecursiveTree";
+import fakeTreeData from "./fakeTreeData";
 
-function App() {
+export type CategoryTreeNode = {
+  name: string;
+  children?: CategoryTreeNode[];
+};
+
+export type DisplayComponentProps = {
+  node: CategoryTreeNode;
+  addNode: (node: CategoryTreeNode) => (name: string) => void;
+};
+
+const App = () => {
+  const [treeData, setTreeData] = useState<CategoryTreeNode>(fakeTreeData);
+
+  /**
+   * Add note to the tree given parent node
+   */
+  const addNode = (parentNode: CategoryTreeNode) => (name: string) => {
+    const newNode = { name };
+    if (!parentNode.children) {
+      parentNode.children = [];
+    }
+    parentNode.children.push(newNode);
+
+    setTreeData({ ...treeData });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <h1>Category Tree</h1>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          width: "100%",
+        }}
+      >
+        <div>
+          <h2>Recursive Traversal</h2>
+          <RecursiveTree node={treeData} addNode={addNode} />
+        </div>
+        <div>
+          <h2>Iterative Traversal</h2>
+          <IterativeTree node={treeData} addNode={addNode} />
+        </div>
+      </div>
+    </>
   );
-}
+};
 
 export default App;

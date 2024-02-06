@@ -2,8 +2,10 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+// TODO: Write tests :)
+
+test('renders Category tree title', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+  const linkElement = screen.getByText(/Category tree/i);
   expect(linkElement).toBeInTheDocument();
 });
