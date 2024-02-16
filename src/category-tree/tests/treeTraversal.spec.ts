@@ -1,5 +1,6 @@
 import { Node } from "../types";
 import traverseIteratively from "../traverseIteratively";
+import traverseRecursively from "../traverseRecursively";
 
 const tree: Node = {
   id: "1",
@@ -30,7 +31,7 @@ const tree: Node = {
 describe("treeTraversal", () => {
   it("traverses tree pre-order depth first and returns array with node names and depths", () => {
     const iterativeResult = traverseIteratively(tree);
-    // const recursiveResult = traverseRecursively(tree);
+    const recursiveResult = traverseRecursively(tree);
 
     const expected = [
       { id: "1", name: "root", depth: 0 },
@@ -42,7 +43,7 @@ describe("treeTraversal", () => {
       { id: "7", name: "sub-subcategory-2.1.1", depth: 3 },
     ];
 
-    // expect(iterativeResult).toEqual(recursiveResult);
+    expect(iterativeResult).toEqual(recursiveResult);
     expect(iterativeResult).toEqual(expected);
   });
 });

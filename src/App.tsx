@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import IterativeTree from "./IterativeTree";
 import RecursiveTree from "./RecursiveTree";
-import fakeTree from "./category-tree/tests/fakeTree";
+import fakeTree from "./category-tree/fakeTree";
 
 export type CategoryTreeNode = {
   name: string;
