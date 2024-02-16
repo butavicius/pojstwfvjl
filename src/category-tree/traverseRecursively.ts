@@ -1,14 +1,14 @@
-import { CategoryLabel, Node } from "./types";
+import { CategoryLabelProps, Node } from "./types";
 
 export default function traverseRecursively(
   node: Node,
   depth: number = 0,
-): CategoryLabel[] {
+): CategoryLabelProps[] {
   if (!node.children?.length) {
     return [{ id: node.id, name: node.name, depth }];
   }
 
-  let childrenResult: CategoryLabel[] = [];
+  let childrenResult: CategoryLabelProps[] = [];
 
   for (const childNode of node.children) {
     childrenResult = childrenResult.concat(

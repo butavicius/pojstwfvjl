@@ -4,7 +4,7 @@ export type Node = {
     children?: Node[];
 }
 
-export type CategoryLabel = {
+export type CategoryLabelProps = {
     id: string;
     name: Node["name"];
     depth: number;
