@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import IterativeTree from "./IterativeTree";
 import RecursiveTree from "./RecursiveTree";
-import fakeTreeData from "./fakeTreeData";
+import fakeTree from "./category-tree/tests/fakeTree";
 
 export type CategoryTreeNode = {
   name: string;
@@ -14,7 +14,7 @@ export type DisplayComponentProps = {
 };
 
 const App = () => {
-  const [treeData, setTreeData] = useState<CategoryTreeNode>(fakeTreeData);
+  const [treeData, setTreeData] = useState<CategoryTreeNode>(fakeTree);
 
   /**
    * Add note to the tree given parent node

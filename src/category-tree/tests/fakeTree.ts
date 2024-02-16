@@ -1,4 +1,4 @@
-const fakeTreeData = {
+const fakeTree = {
   name: "Root",
   children: [
     {
@@ -21,4 +21,4 @@ const fakeTreeData = {
   ],
 };
 
-export default fakeTreeData;
+export default fakeTree;
