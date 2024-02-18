@@ -1,20 +1,17 @@
 import { CategoryLabelProps, Node } from "./types";
 
-export default function traverseRecursively(
-  node: Node,
-  depth: number = 0,
-): CategoryLabelProps[] {
-  if (!node.children?.length) {
-    return [{ id: node.id, name: node.name, depth }];
+export default function traverseRecursively(node: Node): CategoryLabelProps[] {
+  const results: CategoryLabelProps[] = [];
+
+  function preorder(node: Node, depth: number = 0) {
+    results.push({ id: node.id, name: node.name, depth });
+    if (node.children)
+      for (const childNode of node.children) {
+        preorder(childNode, depth + 1);
+      }
   }
 
-  let childrenResult: CategoryLabelProps[] = [];
+  preorder(node);
 
-  for (const childNode of node.children) {
-    childrenResult = childrenResult.concat(
-      traverseRecursively(childNode, depth + 1),
-    );
-  }
-
-  return [{ id: node.id, name: node.name, depth }, ...childrenResult];
+  return results;
 }

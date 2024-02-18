@@ -1,6 +1,8 @@
 import { Node } from "../types";
 import traverseIteratively from "../traverseIteratively";
 import traverseRecursively from "../traverseRecursively";
+import traverseIterativelyPostOrder from "../traverseIterativelyPostOrder";
+import traverseRecursivelyPostOrder from "../traverseRecursivelyPostOrder";
 
 const tree: Node = {
   id: "1",
@@ -44,6 +46,24 @@ describe("treeTraversal", () => {
     ];
 
     expect(iterativeResult).toEqual(recursiveResult);
-    expect(iterativeResult).toEqual(expected);
+    expect(recursiveResult).toEqual(expected);
+  });
+
+  it("traverses tree post-order depth first and returns array with node names and depths", () => {
+    const iterativeResultPostOrder = traverseIterativelyPostOrder(tree);
+    const recursiveResultPostOrder = traverseRecursivelyPostOrder(tree);
+
+    const expected = [
+      { id: "3", name: "subcategory-1.1", depth: 2 },
+      { id: "4", name: "subcategory-1.2", depth: 2 },
+      { id: "2", name: "category-1", depth: 1 },
+      { id: "7", name: "sub-subcategory-2.1.1", depth: 3 },
+      { id: "6", name: "subcategory-2.1", depth: 2 },
+      { id: "5", name: "category-2", depth: 1 },
+      { id: "1", name: "root", depth: 0 },
+    ];
+
+    expect(iterativeResultPostOrder).toEqual(recursiveResultPostOrder);
+    expect(recursiveResultPostOrder).toEqual(expected);
   });
 });
