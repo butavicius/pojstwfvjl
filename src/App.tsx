@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import IterativeTree from "./IterativeTree";
-import RecursiveTree from "./RecursiveTree";
 import fakeTree from "./category-tree/fakeTree";
 import traverseRecursively from "./category-tree/traverseRecursively";
 import CategoryLabel from "./components/CategoryLabel";
@@ -17,20 +15,7 @@ export type DisplayComponentProps = {
 };
 
 const App = () => {
-  const [treeData, setTreeData] = useState<CategoryTreeNode>(fakeTree);
-
-  /**
-   * Add note to the tree given parent node
-   */
-  const addNode = (parentNode: CategoryTreeNode) => (name: string) => {
-    const newNode = { name };
-    if (!parentNode.children) {
-      parentNode.children = [];
-    }
-    parentNode.children.push(newNode);
-
-    setTreeData({ ...treeData });
-  };
+  // const [treeData, setTreeData] = useState<CategoryTreeNode>(fakeTree);
 
   return (
     <>
