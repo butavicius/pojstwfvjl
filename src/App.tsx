@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React  from "react";
 import fakeTree from "./category-tree/fakeTree";
 import traverseRecursively from "./category-tree/traverseRecursively";
 import CategoryLabel from "./components/CategoryLabel";
@@ -26,13 +26,10 @@ const App = () => {
         style={{
           display: "flex",
           justifyContent: "space-around",
-          width: "100%",
         }}
       >
         <div>
           <h2>Recursive Traversal</h2>
-          {/*<RecursiveTree node={treeData} addNode={addNode} />*/}
-
           {traverseRecursively(fakeTree).map((category) => (
             <CategoryLabel
               id={category.id}
@@ -43,8 +40,6 @@ const App = () => {
         </div>
         <div>
           <h2>Iterative Traversal</h2>
-          {/*<IterativeTree node={treeData} addNode={addNode} />*/}
-
           {traverseIteratively(fakeTree).map((category) => (
             <CategoryLabel
               id={category.id}
