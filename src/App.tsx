@@ -1,21 +1,17 @@
-import React  from "react";
+import React, {useState} from "react";
 import fakeTree from "./category-tree/fakeTree";
 import traverseRecursively from "./category-tree/traverseRecursively";
 import CategoryLabel from "./components/CategoryLabel";
 import traverseIteratively from "./category-tree/traverseIteratively";
-
-export type CategoryTreeNode = {
-  name: string;
-  children?: CategoryTreeNode[];
-};
+import {CategoryNode} from "./category-tree/types";
 
 export type DisplayComponentProps = {
-  node: CategoryTreeNode;
-  addNode: (node: CategoryTreeNode) => (name: string) => void;
+  node: CategoryNode;
+  addNode: (node: CategoryNode) => (name: string) => void;
 };
 
 const App = () => {
-  // const [treeData, setTreeData] = useState<CategoryTreeNode>(fakeTree);
+  const [treeData, setTreeData] = useState<CategoryNode>(fakeTree);
 
   return (
     <>
@@ -30,7 +26,7 @@ const App = () => {
       >
         <div>
           <h2>Recursive Traversal</h2>
-          {traverseRecursively(fakeTree).map((category) => (
+          {traverseRecursively(treeData).map((category) => (
             <CategoryLabel
               id={category.id}
               name={category.name}
@@ -40,7 +36,7 @@ const App = () => {
         </div>
         <div>
           <h2>Iterative Traversal</h2>
-          {traverseIteratively(fakeTree).map((category) => (
+          {traverseIteratively(treeData).map((category) => (
             <CategoryLabel
               id={category.id}
               name={category.name}

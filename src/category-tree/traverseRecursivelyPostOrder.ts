@@ -1,12 +1,12 @@
-import { CategoryLabelProps, Node } from "./types";
+import { CategoryLabelProps, CategoryNode } from "./types";
 
 export default function traverseRecursivelyPostOrder(
-    node: Node,
+    node: CategoryNode,
 ): CategoryLabelProps[] {
 
     const results: CategoryLabelProps[] = []
 
-    function postOrder(node: Node, depth: number = 0) {
+    function postOrder(node: CategoryNode, depth: number = 0) {
 
         if(node.children)
             for (const childNode of node.children) {

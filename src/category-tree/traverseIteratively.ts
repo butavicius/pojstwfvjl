@@ -1,6 +1,6 @@
-import { CategoryLabelProps, Node } from "./types";
+import { CategoryLabelProps, CategoryNode } from "./types";
 
-export default function traverseIteratively(node: Node) {
+export default function traverseIteratively(node: CategoryNode) {
   const result: CategoryLabelProps[] = [];
   const stack = [{ node, depth: 0 }];
 

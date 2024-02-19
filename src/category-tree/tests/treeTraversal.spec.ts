@@ -1,10 +1,10 @@
-import { Node } from "../types";
+import { CategoryNode } from "../types";
 import traverseIteratively from "../traverseIteratively";
 import traverseRecursively from "../traverseRecursively";
 import traverseIterativelyPostOrder from "../traverseIterativelyPostOrder";
 import traverseRecursivelyPostOrder from "../traverseRecursivelyPostOrder";
 
-const tree: Node = {
+const tree: CategoryNode = {
   id: "1",
   name: "root",
   children: [

@@ -1,29 +1,30 @@
-import {Node} from "./types";
+import {CategoryNode} from "./types";
+import generateId from "./generateId";
 
-const fakeTree: Node = {
-  id: "1",
+const fakeTree: CategoryNode = {
+  id: generateId(),
   name: "Root",
   children: [
     {
-      id: "2",
+      id: generateId(),
       name: "Category 1",
       children: [
-        { id: "3", name: "Subcategory 1.1" },
+        { id: generateId(), name: "Subcategory 1.1" },
         {
-          id: "4",
+          id: generateId(),
           name: "Subcategory 1.2",
           children: [
-            { id: "5", name: "Subcategory 1.2.1" },
-            { id: "6", name: "Subcategory 1.2.2" },
+            { id: generateId(), name: "Subcategory 1.2.1" },
+            { id: generateId(), name: "Subcategory 1.2.2" },
           ],
         },
-        { id: "7", name: "Subcategory 1.3" },
+        { id: generateId(), name: "Subcategory 1.3" },
       ],
     },
     {
-      id: "8",
+      id: generateId(),
       name: "Category 2",
-      children: [{ id: "8", name: "Subcategory 2.1" }, { id: "9", name: "Subcategory 2.2" }],
+      children: [{ id: generateId(), name: "Subcategory 2.1" }, { id: generateId(), name: "Subcategory 2.2" }],
     },
   ],
 };
