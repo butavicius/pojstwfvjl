@@ -22,13 +22,21 @@ const App = () => {
         <div>
           <h2>Recursive Traversal</h2>
           {traverseRecursively(treeData).map((category) => (
-            <CategoryLabel node={category.node} depth={category.depth} />
+            <CategoryLabel
+              key={category.node.id}
+              node={category.node}
+              depth={category.depth}
+            />
           ))}
         </div>
         <div>
           <h2>Iterative Traversal</h2>
           {traverseIteratively(treeData).map((category) => (
-            <CategoryLabel node={category.node} depth={category.depth} />
+            <CategoryLabel
+              key={category.node.id}
+              node={category.node}
+              depth={category.depth}
+            />
           ))}
         </div>
       </div>
