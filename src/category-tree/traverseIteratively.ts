@@ -7,7 +7,7 @@ export default function traverseIteratively(node: CategoryNode) {
   while (stack.length > 0) {
     const { node, depth } = stack.pop()!;
 
-    result.push({ id: node.id, name: node.name, depth });
+    result.push({ node, depth });
 
     if (!node.children) continue;
 

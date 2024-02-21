@@ -16,7 +16,7 @@ export default function traverseIterativelyPostOrder(node: CategoryNode) {
       visited.add(node.id);
     } else {
       stack.pop();
-      result.push({ id: node.id, name: node.name, depth: depth });
+      result.push({ node, depth: depth });
     }
   }
 

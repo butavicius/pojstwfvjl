@@ -1,11 +1,10 @@
 export type CategoryNode = {
-    id: string;
-    name: string;
-    children?: CategoryNode[];
-}
+  id: string;
+  name: string;
+  children?: CategoryNode[];
+};
 
 export type CategoryLabelProps = {
-    id: string;
-    name: CategoryNode["name"];
-    depth: number;
-}
+  node: CategoryNode;
+  depth: number;
+};
