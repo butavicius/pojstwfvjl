@@ -123,7 +123,7 @@ export default function CategoryTree({
       )}
 
       {/*Recursively render children*/}
-      {(category.childIds.length > 0 || currentAction) && (
+      {(category.childIds.length > 0 || currentAction === "adding") && (
         <ul>
           {category.childIds.map((id) => (
             <CategoryTree
