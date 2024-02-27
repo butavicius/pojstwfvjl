@@ -3,9 +3,7 @@ import { CategoryTreeState, CategoryNode } from "./types";
 export default function traverseIteratively(node: CategoryNode) {
   const result: CategoryTreeState = {};
 
-  const stack: { node: CategoryNode; parentId: CategoryNode["id"] | null }[] = [
-    { node, parentId: null },
-  ];
+  const stack: { node: CategoryNode }[] = [{ node }];
 
   while (stack.length > 0) {
     const { node } = stack.pop()!;
@@ -23,7 +21,7 @@ export default function traverseIteratively(node: CategoryNode) {
       result[node.id].childIds.push(childNode.id);
 
       // Add child node to stack for next iteration
-      stack.push({ node: childNode, parentId: node.id });
+      stack.push({ node: childNode });
     }
   }
 

@@ -1,6 +1,6 @@
 import { CategoryTreeState } from "../types";
 import generateId from "../generateId";
-import categoryStateReducer from "../state-reducer/categoryStateReducer";
+import categoryStateReducer from "../categoryStateReducer";
 
 jest.mock("../generateId.ts");
 

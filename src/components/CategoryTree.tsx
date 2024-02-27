@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import styles from "./CategoryTree.module.css";
-import { CategoryAction } from "../category-tree/state-reducer/categoryStateReducer";
+import { CategoryAction } from "../category-tree/categoryStateReducer";
 import EditIcon from "@mui/icons-material/Edit";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import DeleteIcon from "@mui/icons-material/Delete";

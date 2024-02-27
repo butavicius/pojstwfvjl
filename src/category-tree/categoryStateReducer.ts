@@ -1,4 +1,4 @@
-import { CategoryTreeState } from "../types";
+import { CategoryTreeState } from "./types";
 import { produce } from "immer";
 
 export type CategoryAction =

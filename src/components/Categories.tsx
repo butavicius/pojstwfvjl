@@ -3,7 +3,7 @@ import { useReducer } from "react";
 import traverseIteratively from "../category-tree/traverseIteratively";
 import CategoryTree from "./CategoryTree";
 import styles from "./Categories.module.css";
-import categoryStateReducer from "../category-tree/state-reducer/categoryStateReducer";
+import categoryStateReducer from "../category-tree/categoryStateReducer";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import generateId from "../category-tree/generateId";
 
