@@ -15,15 +15,17 @@ export default function Categories() {
   const categories = categoriesById.root.childIds;
 
   return (
-    <ul className={styles.categories}>
-      {categories.map((id) => (
-        <CategoryTree
-          key={id}
-          categoriesById={categoriesById}
-          id={id}
-          parentId="root"
-        />
-      ))}
-    </ul>
+    <div className={styles.container}>
+      <ul className={styles.categories}>
+        {categories.map((id) => (
+          <CategoryTree
+            key={id}
+            categoriesById={categoriesById}
+            id={id}
+            parentId="root"
+          />
+        ))}
+      </ul>
+    </div>
   );
 }

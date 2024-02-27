@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 0.5rem;
+    align-items: center;
+    height: 2rem;
+}
+
+.plusIcon {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    color: gray;
+}
+
+.plusIcon:hover {
+    color:white
+}
+
+.backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.4;
+    z-index: 1
+}
+
+.input {
+    position: relative;
+    z-index: 9999
+}
