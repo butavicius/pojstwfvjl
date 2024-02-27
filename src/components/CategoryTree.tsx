@@ -10,6 +10,8 @@ import { CategoryAction } from "../category-tree/categoryStateReducer";
 import EditIcon from "@mui/icons-material/Edit";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import DeleteIcon from "@mui/icons-material/Delete";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import generateId from "../category-tree/generateId";
 
 type Props = {
@@ -30,6 +32,7 @@ export default function CategoryTree({
     "adding" | "editing" | null
   >(null);
   const [value, setValue] = useState("");
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const category = categoriesById[id];
 
@@ -37,6 +40,10 @@ export default function CategoryTree({
     setCurrentAction(null);
     setValue("");
     setIsHovered(false);
+  };
+
+  const handleToggleCollapsed = () => {
+    setIsCollapsed(!isCollapsed);
   };
 
   const handleInitialize = (action: "adding" | "editing") => {
@@ -110,10 +117,18 @@ export default function CategoryTree({
           onMouseLeave={() => setIsHovered(false)}
         >
           <div className={styles.container}>
+            {category.childIds.length > 0 &&
+              (isCollapsed ? (
+                <ArrowDropUpIcon onClick={handleToggleCollapsed} />
+              ) : (
+                <ArrowDropDownIcon onClick={handleToggleCollapsed} />
+              ))}
             {category.name}
             {isHovered && (
               <div className={styles.buttonsContainer}>
-                <AddCircleIcon onClick={() => handleInitialize("adding")} />
+                {!isCollapsed && (
+                  <AddCircleIcon onClick={() => handleInitialize("adding")} />
+                )}
                 <EditIcon onClick={() => handleInitialize("editing")} />
                 <DeleteIcon onClick={handleDelete} />
               </div>
@@ -123,40 +138,41 @@ export default function CategoryTree({
       )}
 
       {/*Recursively render children*/}
-      {(category.childIds.length > 0 || currentAction === "adding") && (
-        <ul>
-          {category.childIds.map((id) => (
-            <CategoryTree
-              key={id}
-              id={id}
-              categoriesById={categoriesById}
-              parentId={category.id}
-              dispatch={dispatch}
-            />
-          ))}
+      {(category.childIds.length > 0 || currentAction === "adding") &&
+        !isCollapsed && (
+          <ul>
+            {category.childIds.map((id) => (
+              <CategoryTree
+                key={id}
+                id={id}
+                categoriesById={categoriesById}
+                parentId={category.id}
+                dispatch={dispatch}
+              />
+            ))}
 
-          {/*If new category is being added, render it input field after the children*/}
-          {currentAction === "adding" && (
-            <li>
-              {/*Prevents other category labels from being interactive*/}
-              <div className={styles.backdrop}></div>
-              <form
-                onSubmit={handleSubmit}
-                className={styles.input}
-                onKeyDown={handleKeyDown}
-              >
-                <input
-                  autoFocus
-                  type={"text"}
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-                  onBlur={resetState}
-                />
-              </form>
-            </li>
-          )}
-        </ul>
-      )}
+            {/*If new category is being added, render it input field after the children*/}
+            {currentAction === "adding" && (
+              <li>
+                {/*Prevents other category labels from being interactive*/}
+                <div className={styles.backdrop}></div>
+                <form
+                  onSubmit={handleSubmit}
+                  className={styles.input}
+                  onKeyDown={handleKeyDown}
+                >
+                  <input
+                    autoFocus
+                    type={"text"}
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                    onBlur={resetState}
+                  />
+                </form>
+              </li>
+            )}
+          </ul>
+        )}
     </>
   );
 }
