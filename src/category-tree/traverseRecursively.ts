@@ -1,19 +1,20 @@
-import { CategoryLabelProps, CategoryNode } from "./types";
+import { CategoryTreeState, CategoryNode } from "./types";
 
 export default function traverseRecursively(
   node: CategoryNode,
-): CategoryLabelProps[] {
-  const results: CategoryLabelProps[] = [];
+): CategoryTreeState {
+  const results: CategoryTreeState = {};
 
-  function preorder(node: CategoryNode, depth: number = 0) {
-    results.push({ node, depth });
+  function process(node: CategoryNode) {
+    results[node.id] = { id: node.id, name: node.name, childIds: [] };
     if (node.children)
       for (const childNode of node.children) {
-        preorder(childNode, depth + 1);
+        results[node.id].childIds.push(childNode.id);
+        process(childNode);
       }
   }
 
-  preorder(node);
+  process(node);
 
   return results;
 }

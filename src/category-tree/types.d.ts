@@ -4,7 +4,10 @@ export type CategoryNode = {
   children?: CategoryNode[];
 };
 
-export type CategoryLabelProps = {
-  node: CategoryNode;
-  depth: number;
+export type CategoryTreeState = {
+  [key: string]: {
+    name: string;
+    id: string;
+    childIds: string[];
+  };
 };

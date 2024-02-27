@@ -1,6 +1,6 @@
-import { CategoryLabelProps } from "../category-tree/types";
+import { CategoryTreeState } from "../category-tree/types";
 
-export default function CategoryLabel({ node, depth }: CategoryLabelProps) {
+export default function CategoryLabel({ node, depth }: CategoryTreeState) {
   const labelText = `${"- ".repeat(depth)}${node.name}`;
 
   return <h4>{labelText}</h4>;
