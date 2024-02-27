@@ -1,8 +1,23 @@
 .container {
+    position: relative;
+}
+.container svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    color: gray;
 }
 
-.categories li {
+.container svg:hover {
+    color:white
+}
+
+.categories {
+    margin-block-start:0;
+}
+
+.categories li{
     list-style: none;
-    display: block;
+    height: 2rem;
 }
 

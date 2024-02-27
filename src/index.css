@@ -62,6 +62,7 @@ textarea {
 html {
   font-family: var(--sans-font);
   scroll-behavior: smooth;
+  padding: 2rem;
 }
 
 body {
