@@ -6,6 +6,6 @@ jest.mock("./category-tree/generateId.ts");
 
 test("renders Category tree title", () => {
   render(<App />);
-  const linkElement = screen.getByText(/Category tree/i);
+  const linkElement = screen.getByText(/Categories/i);
   expect(linkElement).toBeInTheDocument();
 });
